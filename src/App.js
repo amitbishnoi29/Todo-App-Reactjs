@@ -13,11 +13,12 @@ import uuidv4 from 'uuidv4'
   }
 
 
-  // componentDidMount(){
-  //   const todos= localStorage.getItem('todos');
-    
-  //   this.setState({todos:JSON.parse(todos)})
-  // }
+  componentDidMount(){
+    if (this.state.todos.length>0) {
+      let todos= localStorage.getItem('todos');
+      this.setState({todos:JSON.parse(todos)})
+    }
+  }
 
   markComplete = (id) => {
     this.setState( { todos : this.state.todos.map((todo)=>{
@@ -32,7 +33,7 @@ import uuidv4 from 'uuidv4'
   delTodo = (id) => {
     this.setState({
       todos : this.state.todos.filter((todo)=> todo.id!==id)
-    })
+    }) 
     localStorage.setItem('todos',JSON.stringify(this.state.todos));
   }
 
@@ -42,14 +43,19 @@ import uuidv4 from 'uuidv4'
       title,
       completed : false
     }
-   // console.log(newTodo);
+   console.log(this.state.todos);
     
     this.setState (
       {                                   // state is an object
         todos: [...this.state.todos , newTodo]
       }
     );
+    
+    
     localStorage.setItem('todos',JSON.stringify(this.state.todos));
+
+    console.log(this.state.todos);
+    
   }
  
 
