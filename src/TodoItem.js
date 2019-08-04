@@ -5,7 +5,7 @@ export default class TodoItem extends Component {
     todoStyle = () =>{
         return {
             backgroundColor:'#f4f4f4',
-            padding:'5px',
+            padding:'1px',
             borderBottom:'1px dotted blue',
             textDecoration : this.props.todo.completed ?
             'line-through' : 'none'
@@ -17,8 +17,8 @@ export default class TodoItem extends Component {
     render() {
         const { id , title} = this.props.todo;
         return (
-                <div className='container' >
-                <h3 style={this.todoStyle()}  >
+                <div className='container'  style={this.todoStyle()} >
+                <h3  >
                     <input 
                         onChange={this.props.markComplete.bind(this,id)}
                         type="checkbox"
